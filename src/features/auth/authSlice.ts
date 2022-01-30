@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import axios from "axios";
-import { PROPS_AUTHEN, PROPS_NICK_NAME, PROPS_PROFILE } from "../types";
+import { PROPS_AUTHEN, PROPS_NICKNAME, PROPS_PROFILE } from "../types";
 
 const apiUrl = process.env.REACT_APP_DEV_API_URL;
 
@@ -33,6 +33,19 @@ export const fetchAsyncLegister = createAsyncThunk(
 // 新規プロフィール作成
 export const fetchAsyncCreateProf = createAsyncThunk(
   "profile/post",
+  async (nickName: PROPS_NICKNAME) => {
+    const res = await axios.post(`${apiUrl}api/profile/`, nickName, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${localStorage.localJWT}`,
+      },
+    });
+    return res.data;
+  }
+);
+
+export const fetchAsyncUpdateProf = createAsyncThunk(
+  "profile/put",
   async (profile: PROPS_PROFILE) => {
     const uploadData = new FormData();
     uploadData.append("nickName", profile.nickName);
@@ -47,19 +60,6 @@ export const fetchAsyncCreateProf = createAsyncThunk(
         },
       }
     );
-    return res.data;
-  }
-);
-
-export const fetchAsyncUpdateProf = createAsyncThunk(
-  "profile/post",
-  async (nickName: PROPS_NICK_NAME) => {
-    const res = await axios.post(`${apiUrl}api/profile/`, nickName, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `JWT ${localStorage.localJWT}`,
-      },
-    });
     return res.data;
   }
 );
@@ -135,7 +135,7 @@ export const authSlice = createSlice({
     resetOpenProfile(state) {
       state.openProfile = false;
     },
-    editNickName(state, action) {
+    editNickname(state, action) {
       state.myprofile.nickName = action.payload;
     },
   },
@@ -170,7 +170,7 @@ export const {
   resetOpenSignUp,
   setOpenProfile,
   resetOpenProfile,
-  editNickName,
+  editNickname,
 } = authSlice.actions;
 
 export const selectIsLoadingAuth = (state: RootState) =>
