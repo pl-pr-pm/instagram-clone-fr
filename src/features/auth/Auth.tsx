@@ -1,7 +1,7 @@
 import React from "react";
 import { AppDispatch } from "../../app/store";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "Auth.module.css";
+import styles from "./Auth.module.css";
 import Modal from "react-modal";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -46,6 +46,7 @@ const Auth: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   return (
     <>
+      AuthComponent
       <Modal
         isOpen={openSignUp}
         onRequestClose={async () => {
@@ -150,7 +151,6 @@ const Auth: React.FC = () => {
           )}
         </Formik>
       </Modal>
-
       <Modal
         isOpen={openSignIn}
         onRequestClose={async () => {
