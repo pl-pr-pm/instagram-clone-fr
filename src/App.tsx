@@ -1,13 +1,8 @@
 import React from "react";
-import { Counter } from "./features/counter/Counter";
-import "./App.css";
+import styles from "./App.module.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header"></header>
-    </div>
-  );
+  return <div className={styles.app}></div>;
 }
 
 export default App;
