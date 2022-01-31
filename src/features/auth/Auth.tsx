@@ -46,7 +46,6 @@ const Auth: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   return (
     <>
-      AuthComponent
       <Modal
         isOpen={openSignUp}
         onRequestClose={async () => {
@@ -92,7 +91,7 @@ const Auth: React.FC = () => {
             <div>
               <form onSubmit={handleSubmit}>
                 <div className={styles.auth_signUp}>
-                  <h1 className={styles.auth_title}>SNS clone</h1>
+                  <h1 className={styles.auth_title}>Zenstagram</h1>
                   <br />
                   <div className={styles.auth_progress}>
                     {isLoadingAuth && <CircularProgress />}
@@ -192,7 +191,7 @@ const Auth: React.FC = () => {
             <div>
               <form onSubmit={handleSubmit}>
                 <div className={styles.auth_signUp}>
-                  <h1 className={styles.auth_title}>SNS clone</h1>
+                  <h1 className={styles.auth_title}>Zenstagram</h1>
                   <br />
                   <div className={styles.auth_progress}>
                     {isLoadingAuth && <CircularProgress />}

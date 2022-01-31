@@ -6,7 +6,6 @@ function App() {
   return (
     <div>
       <Core />
-      Hello APP
     </div>
   );
 }
